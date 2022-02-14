@@ -1,0 +1,52 @@
+plugins {
+    id("com.github.johnrengelman.shadow") version "7.1.1"
+    id("io.micronaut.application") version "3.2.0"
+}
+
+version = "0.1"
+group = "com.incubyte"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    annotationProcessor("io.micronaut:micronaut-http-validation")
+    implementation("io.micronaut:micronaut-http-client")
+    implementation("io.micronaut:micronaut-jackson-databind")
+    implementation("io.micronaut:micronaut-runtime")
+    implementation("io.micronaut.liquibase:micronaut-liquibase")
+    implementation("jakarta.annotation:jakarta.annotation-api")
+    runtimeOnly("ch.qos.logback:logback-classic")
+    runtimeOnly("com.h2database:h2")
+    testImplementation("org.assertj:assertj-core")
+    implementation("io.micronaut:micronaut-validation")
+
+    testImplementation("org.mockito:mockito-core")
+    testImplementation 'org.mockito:mockito-junit-jupiter:2.23.0'
+
+    annotationProcessor("io.micronaut.data:micronaut-data-processor:3.2.2")
+    implementation("io.micronaut.data:micronaut-data-hibernate-jpa:3.2.2")
+    runtimeOnly("io.micronaut.sql:micronaut-jdbc-tomcat")
+}
+
+
+application {
+    mainClass.set("com.incubyte.Application")
+}
+java {
+    sourceCompatibility = JavaVersion.toVersion("17")
+    targetCompatibility = JavaVersion.toVersion("17")
+}
+
+graalvmNative.toolchainDetection = false
+micronaut {
+    runtime("jetty")
+    testRuntime("junit5")
+    processing {
+        incremental(true)
+        annotations("com.incubyte.*")
+    }
+}
+
+
