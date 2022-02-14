@@ -29,6 +29,7 @@ dependencies {
     implementation("io.micronaut.data:micronaut-data-hibernate-jpa:3.2.2")
     runtimeOnly("io.micronaut.sql:micronaut-jdbc-tomcat")
     runtimeOnly("mysql:mysql-connector-java")
+//    runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
 
 }
 
