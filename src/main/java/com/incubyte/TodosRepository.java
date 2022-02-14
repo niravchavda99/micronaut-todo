@@ -6,6 +6,6 @@ import io.micronaut.data.repository.CrudRepository;
 import java.util.List;
 
 @Repository
-public interface TodoRepository extends CrudRepository<Todo, Long> {
+public interface TodosRepository extends CrudRepository<Todo, Long> {
     List<Todo> findByStatusOrderById(Status status);
 }
