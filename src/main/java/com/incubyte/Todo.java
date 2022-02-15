@@ -3,7 +3,7 @@ package com.incubyte;
 import javax.persistence.*;
 
 @Entity
-//@Table(name = "todos")
+@Table(name = "Todo")
 public class Todo {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
