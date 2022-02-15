@@ -35,12 +35,16 @@ class TodosControllerShould {
 
     @Test
     void invoke_todos_service_to_retrieve_open_todos() {
-        //        Arrange
         TodosController todosController = new TodosController(todosService);
-        //        Act
         List<Todo> todos = todosController.open();
-        //        Assert
         verify(todosService).getTodos(Status.OPEN);
+    }
+
+    @Test
+    public void invoke_todos_service_to_retrieve_closed_todos() {
+        TodosController todosController = new TodosController(todosService);
+        List<Todo> todos = todosController.closed();
+        verify(todosService).getTodos(Status.CLOSED);
     }
 
     @Test

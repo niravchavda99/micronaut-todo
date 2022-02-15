@@ -33,4 +33,9 @@ public class TodosController {
     public Todo update(@Body Todo todo) {
         return todosService.update(todo);
     }
+
+    @Get("/closed")
+    public List<Todo> closed() {
+        return todosService.getTodos(Status.CLOSED);
+    }
 }
