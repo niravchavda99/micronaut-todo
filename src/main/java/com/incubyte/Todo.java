@@ -2,44 +2,44 @@ package com.incubyte;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "Todo")
+@Entity(name = "todo")
 public class Todo {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
 
-  String title;
-  Status status;
+    String title;
+    Status status;
 
-  public Todo() {}
+    public Todo() {
+    }
 
-  public Todo(String title, Status status) {
-    this.title = title;
-    this.status = status;
-  }
+    public Todo(String title, Status status) {
+        this.title = title;
+        this.status = status;
+    }
 
-  public Long getId() {
-    return id;
-  }
+    public Long getId() {
+        return id;
+    }
 
-  public void setId(Long id) {
-    this.id = id;
-  }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-  public String getTitle() {
-    return title;
-  }
+    public String getTitle() {
+        return title;
+    }
 
-  public void setTitle(String title) {
-    this.title = title;
-  }
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-  public Status getStatus() {
-    return status;
-  }
+    public Status getStatus() {
+        return status;
+    }
 
-  public void setStatus(Status status) {
-    this.status = status;
-  }
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 }
