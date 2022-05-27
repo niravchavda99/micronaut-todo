@@ -1,0 +1,1 @@
+web: java -Djava.awt.headless=true -jar build/libs/micronaut-todo-0.1-all.jar
