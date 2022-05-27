@@ -7,15 +7,8 @@ micronaut:
 
 datasources:
   default:
-    #    url: jdbc:h2:mem:devDb
-    #    driverClassName: org.h2.Driver
-    #    url: jdbc:postgresql://localhost:49153/postgres
-    url: ${DB_URL:`jdbc:postgresql://localhost:49153/postgres?user=postgres&password=postgrespw`}
+    url: ${DB_URL:`jdbc:postgresql://localhost:5432/postgres?user=niravchavda&password=niravchavda`}
     driverClassName: org.postgresql.Driver
-    #    username: postgres
-    #    password: postgrespw
-    #    schema-generate: CREATE_DROP
-    #    dialect: H2
     dialect: POSTGRES
     packages-to-scan:
       - 'com.incubyte'
@@ -23,8 +16,6 @@ jpa:
   default:
     properties:
       hibernate:
-        #        hbm2ddl:
-        #          auto: update
         show_sql: true
 liquibase:
   datasources:
