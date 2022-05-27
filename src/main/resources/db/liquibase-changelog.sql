@@ -1,3 +1,5 @@
 --liquibase formatted sql
 --changeset KartikNirav:1
-CREATE TABLE todo (id bigint(20) NOT NULL AUTO_INCREMENT, status int(11) DEFAULT NULL, title varchar(255) DEFAULT NULL, PRIMARY KEY (id));
+CREATE SEQUENCE todo_seq;
+
+CREATE TABLE todo (id bigint NOT NULL DEFAULT NEXTVAL ('todo_seq'), status int DEFAULT NULL, title varchar(255) DEFAULT NULL, PRIMARY KEY (id));
