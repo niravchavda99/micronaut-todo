@@ -10,6 +10,12 @@ jobs:
         with:
           java-version: 17
           distribution: 'adopt'
+      - name: Output Run ID
+        run: echo ${{ github.run_id }}
+      - name: Output Run Number
+        run: echo ${{ github.run_number }}
+      - name: Output Run Attempt
+        run: echo ${{ github.run_attempt }}
       - name: Make Gradlew Executable
         run: chmod +x ./gradlew
       - name: Test with Gradle
@@ -21,8 +27,3 @@ jobs:
           files: build/test-results/**/*.xml
       - name: Build With Gradle
         run: ./gradlew build
-#      - name: Upload Artifacts
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: outsidein-posts-0.1-all.jar
-#          path: build/libs/outsidein-posts-0.1-all.jar
