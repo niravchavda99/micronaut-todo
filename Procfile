@@ -1,1 +1,1 @@
-web: ./gradlew run
+web: java -jar build/libs/micronaut-todo-0.1-all.jar
