@@ -9,33 +9,39 @@ import java.util.List;
 
 @Controller("/todos")
 public class TodosController {
-    @Inject
-    private TodosService todosService;
 
-    public TodosController(TodosService todosService) {
-        this.todosService = todosService;
-    }
+  @Inject
+  private TodosService todosService;
 
-    @Post
-    public MutableHttpResponse<Todo> save(@Body Todo todo) {
-        if (todo.getTitle() == null || todo.getTitle().isEmpty()) {
-            return HttpResponse.badRequest(todo);
-        }
-        return HttpResponse.ok(todosService.save(todo));
-    }
+  public TodosController(TodosService todosService) {
+    this.todosService = todosService;
+  }
 
-    @Get("/open")
-    public List<Todo> open() {
-        return todosService.getTodos(Status.OPEN);
+  @Post
+  public MutableHttpResponse<Todo> save(@Body Todo todo) {
+    if (todo.getTitle() == null || todo.getTitle().isEmpty()) {
+      return HttpResponse.badRequest(todo);
     }
+    return HttpResponse.ok(todosService.save(todo));
+  }
 
-    @Patch
-    public Todo update(@Body Todo todo) {
-        return todosService.update(todo);
-    }
+  @Get("/open")
+  public List<Todo> open() {
+    return todosService.getTodos(Status.OPEN);
+  }
 
-    @Get("/closed")
-    public List<Todo> closed() {
-        return todosService.getTodos(Status.CLOSED);
-    }
+  @Patch
+  public Todo update(@Body Todo todo) {
+    return todosService.update(todo);
+  }
+
+  @Get("/closed")
+  public List<Todo> closed() {
+    return todosService.getTodos(Status.CLOSED);
+  }
+
+  @Get("healthcheck")
+  public String checkHealth() {
+    return "Up and running!";
+  }
 }
