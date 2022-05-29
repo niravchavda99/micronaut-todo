@@ -1,1 +1,1 @@
-web: java -p 8080 -Djava.awt.headless=true -jar build/libs/micronaut-todo-0.1-all.jar
+web: ./gradlew run
