@@ -1,5 +1,11 @@
 name: CI
-on: [push]
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -27,3 +33,9 @@ jobs:
           files: build/test-results/**/*.xml
       - name: Build With Gradle
         run: ./gradlew build
+      - name: Deploy to Heroku
+      - uses: ahakhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: "micronaut-todo-app"
+          heroku_email: "nmchavda99@gmail.com"
