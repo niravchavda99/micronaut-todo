@@ -44,4 +44,9 @@ public class TodosController {
   public String checkHealth() {
     return "Up and running!";
   }
+
+  @Get("ping")
+  public String ping() {
+    return "Ping!";
+  }
 }
