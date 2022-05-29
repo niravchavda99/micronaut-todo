@@ -47,6 +47,6 @@ public class TodosController {
 
   @Get("ping")
   public String ping() {
-    return "Ping!";
+    return "Ping!!";
   }
 }
