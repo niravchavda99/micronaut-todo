@@ -38,7 +38,7 @@ class TodosControllerTest {
         todo2.put("status", "OPEN");
 
         todo3.put("title", "I dont remember what this todo was!");
-        todo3.put("status", "OPEN");
+        todo3.put("status", "CLOSED");
     }
 
     @Test
