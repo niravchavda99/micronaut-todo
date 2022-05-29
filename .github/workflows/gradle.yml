@@ -1,7 +1,14 @@
-name: CI
-on: [push]
+name: Build, Test & Deploy
+on:
+  push:
+    branches:
+      - feature/**
+      - develop
+      - main
+
 jobs:
-  build:
+  build-test-and-deploy:
+    name: Build, Test & Deploy
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -10,16 +17,10 @@ jobs:
         with:
           java-version: 17
           distribution: 'adopt'
-      - name: Output Run ID
-        run: echo ${{ github.run_id }}
-      - name: Output Run Number
-        run: echo ${{ github.run_number }}
-      - name: Output Run Attempt
-        run: echo ${{ github.run_attempt }}
-      - name: Make Gradlew Executable
-        run: chmod +x ./gradlew
       - name: Test with Gradle
-        run: ./gradlew test
+        run: |
+          chmod +x ./gradlew
+          ./gradlew test
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v1
         if: always()
@@ -27,3 +28,10 @@ jobs:
           files: build/test-results/**/*.xml
       - name: Build With Gradle
         run: ./gradlew build
+      - name: Deploy to Heroku
+        uses: akhileshns/heroku-deploy@v3.12.12
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: "micronaut-todo-app"
+          heroku_email: "nmchavda99@gmail.com"
